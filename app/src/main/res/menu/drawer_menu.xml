@@ -2,10 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 <!--Menu Items-->
-    <group  android:checkableBehavior="single"
-        android:layout_gravity="center"
-        android:gravity="center">
-        >
+    <group  android:checkableBehavior="single">
         <item
             android:id="@+id/home_id"
             android:title="@string/menu_home"></item>
