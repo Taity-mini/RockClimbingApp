@@ -6,7 +6,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="andrewtait1504693.rockclimbingapp.MainActivity">
+    tools:context="andrewtait1504693.rockclimbingapp.MainActivity"
+    android:id="@+id/drawer_layout"
+    >
 
 
     <LinearLayout
@@ -23,10 +25,11 @@
 
     <android.support.design.widget.NavigationView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/navigation_view"
         android:layout_gravity="start"
         app:menu="@menu/drawer_menu"
+        app:headerLayout="@layout/navigation_drawer_header"
         />
 
 </android.support.v4.widget.DrawerLayout>

@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">RockClimbingApp</string>
+
+    <string name="drawer_open">drawer open</string>
+    <string name="drawer_close">drawer closes</string>
+
+    <string name ="menu_header">NAVIGATION</string>
+    <!--Menu Items-->
+    <string name ="menu_home">HOME</string>
+    <string name ="menu_routes">ROUTES</string>
+    <string name ="menu_locations">LOCATIONS</string>
+    <string name ="menu_prefs">PREFERENCES</string>
+
 </resources>
