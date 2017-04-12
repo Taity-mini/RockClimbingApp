@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Home");
 
 
-
         //Fragment navigation  switch from drawer menu
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -57,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
                         item.setCheckable(true);
                         drawerLayout.closeDrawers();
                         break;
-
 
                     case R.id.routes_id:
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -100,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.main_container, new AddRoute());
                 fragmentTransaction.commit();
-                getSupportActionBar().setTitle("Routes");
+                getSupportActionBar().setTitle("Add Routes");
                 break;
 
             //View all routes button
@@ -108,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.main_container, new Routes());
                 fragmentTransaction.commit();
-                getSupportActionBar().setTitle("Add Route");
+                getSupportActionBar().setTitle("Routes");
                 break;
         }
     }
