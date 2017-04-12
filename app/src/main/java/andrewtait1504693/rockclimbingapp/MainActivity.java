@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
@@ -16,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     FragmentTransaction fragmentTransaction;
     NavigationView navigationView;
     Toolbar toolbar;
+    Button addBtn, viewBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.add(R.id.main_container, new Home());
         fragmentTransaction.commit();
         getSupportActionBar().setTitle("Home");
+
+
 
         //Fragment navigation  switch from drawer menu
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
@@ -86,6 +91,26 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    public void onClick(View v) {
+        switch (v.getId()) {
+            //Add new route button
+            case R.id.btnAddRoute:
+                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.main_container, new AddRoute());
+                fragmentTransaction.commit();
+                getSupportActionBar().setTitle("Routes");
+                break;
+
+            //View all routes button
+            case R.id.btnViewRoutes:
+                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.main_container, new Routes());
+                fragmentTransaction.commit();
+                getSupportActionBar().setTitle("Add Route");
+                break;
+        }
     }
 
     protected void onPostCreate(Bundle savedInstanceState) {
