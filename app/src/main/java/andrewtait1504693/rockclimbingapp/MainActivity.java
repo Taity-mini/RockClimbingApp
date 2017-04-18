@@ -66,20 +66,20 @@ public class MainActivity extends AppCompatActivity {
                         drawerLayout.closeDrawers();
                         break;
 
-                    case R.id.locations_id:
+                    case R.id.addRoute_id:
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.main_container, new Locations());
+                        fragmentTransaction.replace(R.id.main_container, new AddRoute());
                         fragmentTransaction.commit();
-                        getSupportActionBar().setTitle("Locations");
+                        getSupportActionBar().setTitle("Add Route");
                         item.setCheckable(true);
                         drawerLayout.closeDrawers();
                         break;
 
-                    case R.id.preferences_id:
+                    case R.id.search_id:
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.main_container, new Preferences());
+                        fragmentTransaction.replace(R.id.main_container, new SearchRoutes());
                         fragmentTransaction.commit();
-                        getSupportActionBar().setTitle("Preferences");
+                        getSupportActionBar().setTitle("Search Routes");
                         item.setCheckable(true);
                         drawerLayout.closeDrawers();
                         break;

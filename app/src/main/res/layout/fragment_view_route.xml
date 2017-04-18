@@ -1,0 +1,144 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="andrewtait1504693.rockclimbingapp.ViewRoute">
+
+    <!-- TODO: Update blank fragment layout -->
+    <android.support.v7.widget.CardView
+        android:id="@+id/ViewRouteCard"
+        android:layout_width="match_parent"
+        android:layout_height="323dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="50dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/viewRouteName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="48dp"
+                android:text="[ROUTE NAME]" />
+
+            <Button
+                android:id="@+id/viewRouteEditBtn"
+                style="@style/AppTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit"
+                android:layout_alignParentBottom="true"
+                android:layout_alignLeft="@+id/dateLabel"
+                android:layout_alignStart="@+id/dateLabel" />
+
+            <Button
+                android:id="@+id/viewRouteLocationBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="22dp"
+                android:layout_marginRight="22dp"
+                android:text="Location" />
+
+            <TextView
+                android:id="@+id/nameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignTop="@+id/viewRouteName"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Route Name:" />
+
+            <TextView
+                android:id="@+id/locationLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nameLabel"
+                android:layout_marginTop="37dp"
+                android:text="Route Location:"
+                android:layout_alignRight="@+id/viewRouteEditBtn"
+                android:layout_alignEnd="@+id/viewRouteEditBtn" />
+
+            <TextView
+                android:id="@+id/viewRouteLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/locationLabel"
+                android:layout_alignBottom="@+id/locationLabel"
+                android:layout_centerHorizontal="true"
+                android:text="[ROUTE_LOCATION]" />
+
+            <TextView
+                android:id="@+id/viewRouteGrade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/viewRouteName"
+                android:layout_alignRight="@+id/viewRouteName"
+                android:layout_below="@+id/viewRouteLocation"
+                android:layout_marginTop="35dp"
+                android:text="[ROUTE GRADE]" />
+
+            <TextView
+                android:id="@+id/gradeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/viewRouteGrade"
+                android:layout_alignBottom="@+id/viewRouteGrade"
+                android:layout_alignLeft="@+id/nameLabel"
+                android:layout_alignStart="@+id/nameLabel"
+                android:text="Route Grade" />
+
+            <TextView
+                android:id="@+id/viewRouteDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/viewRouteGrade"
+                android:layout_alignRight="@+id/viewRouteGrade"
+                android:layout_below="@+id/viewRouteGrade"
+                android:layout_marginTop="34dp"
+                android:text="[ROUTE DATE]" />
+
+            <TextView
+                android:id="@+id/dateLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Route Date:"
+                android:layout_alignBaseline="@+id/viewRouteDate"
+                android:layout_alignBottom="@+id/viewRouteDate"
+                android:layout_alignLeft="@+id/gradeLabel"
+                android:layout_alignStart="@+id/gradeLabel" />
+
+            <TextView
+                android:id="@+id/styleLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:text="Route Style: "
+                android:layout_above="@+id/viewRouteEditBtn"
+                android:layout_alignLeft="@+id/locationLabel"
+                android:layout_alignStart="@+id/locationLabel" />
+
+            <TextView
+                android:id="@+id/viewRouteStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/viewRouteDate"
+                android:layout_alignStart="@+id/viewRouteDate"
+                android:layout_alignTop="@+id/styleLabel"
+                android:text="[ROUTE STYLE]" />
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+
+</FrameLayout>

@@ -1,0 +1,134 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="50dp"
+    tools:context="andrewtait1504693.rockclimbingapp.EditRoute">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/EditCard_view"
+        android:layout_width="wrap_content"
+        android:layout_height="380dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="50dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/editRouteName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="11dp"
+                android:text="[ROUTE NAME]" />
+
+            <TextView
+                android:id="@+id/EditRouteView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Route Style"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_below="@+id/editRouteDateBtn"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="32dp" />
+
+            <Spinner
+                android:id="@+id/editRouteStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/EditRouteView"
+                android:layout_marginTop="33dp"
+                android:clickable="true"
+                android:entries="@array/styles"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/editRouteDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date:"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="26dp"
+                android:layout_marginStart="26dp" />
+
+            <Button
+                android:id="@+id/editRouteDateBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/button"
+                android:text="Select Date"
+                android:textColor="@color/colorWhite"
+                android:textColorLink="@color/colorWhite"
+                android:layout_alignBaseline="@+id/editRouteDate"
+                android:layout_alignBottom="@+id/editRouteDate"
+                android:layout_toRightOf="@+id/editRouteName"
+                android:layout_toEndOf="@+id/editRouteName"
+                android:layout_marginLeft="18dp"
+                android:layout_marginStart="18dp" />
+
+            <EditText
+                android:id="@+id/editRouteLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:ems="10"
+                android:hint="Enter Route Location"
+                android:inputType="textPersonName"
+                android:layout_below="@+id/editRouteName"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="31dp" />
+
+            <EditText
+                android:id="@+id/editRouteGrade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter Route Grade"
+                android:inputType="textPersonName"
+                android:layout_above="@+id/editRouteDateBtn"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <Button
+        android:id="@+id/editRouteUpdateBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:layout_marginStart="18dp"
+        android:text="Update"
+        android:layout_alignBaseline="@+id/editRouteDeleteBtn"
+        android:layout_alignBottom="@+id/editRouteDeleteBtn"
+        android:layout_alignLeft="@+id/EditCard_view"
+        android:layout_alignStart="@+id/EditCard_view" />
+
+    <Button
+        android:id="@+id/editRouteDeleteBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:layout_marginRight="31dp"
+        android:layout_marginEnd="31dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/EditCard_view"
+        android:layout_alignEnd="@+id/EditCard_view"
+        android:layout_marginBottom="28dp" />
+
+
+</RelativeLayout>

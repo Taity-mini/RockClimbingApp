@@ -5,9 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by Andrew Tait (1504693) on 13/04/2017.
@@ -18,7 +21,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
 
     public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "routes";
+    public static final String DATABASE_NAME = "routes.db";
     public static final String TABLE_ROUTES = "routesTable";
 
 
@@ -30,8 +33,8 @@ public class DBHandler extends SQLiteOpenHelper {
     public static final String KEY_STYLE = "routeStyle";
 
 
-    public DBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public DBHandler(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
@@ -52,6 +55,52 @@ public class DBHandler extends SQLiteOpenHelper {
 
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ROUTES);
         onCreate(db);
+    }
+
+    public boolean checkRouteExists(String name) {
+//        SQLiteDatabase db = this.getReadableDatabase();
+//
+//        Cursor cursor;
+//        String sql = "SELECT "+ KEY_NAME +" FROM " + TABLE_ROUTES + " WHERE " + KEY_NAME + " = " + name;
+//        cursor = db.rawQuery(sql, null);
+//
+//
+//        if (cursor.getCount() > 0) {
+//            cursor.close();
+//            db.close();
+//            return true;
+//        } else {
+//            cursor.close();
+//            db.close();
+//            return false;
+//        }
+
+
+        SQLiteDatabase db = getWritableDatabase();
+        String selectString = "SELECT * FROM " + TABLE_ROUTES + " WHERE " + KEY_NAME + " =?";
+
+        // Add the String you are searching by here.
+        // Put it in an array to avoid an unrecognized token error
+        Cursor cursor = db.rawQuery(selectString, new String[] {name});
+
+        boolean hasObject = false;
+        if(cursor.moveToFirst()){
+            hasObject = true;
+
+            //region if you had multiple records to check for, use this region.
+
+            int count = 0;
+            while(cursor.moveToNext()){
+                count++;
+            }
+            //here, count is records found
+            Log.d(TAG, String.format("%d records found", count));
+
+        }
+
+        cursor.close();
+        db.close();
+        return hasObject;
     }
 
     //Create new route
@@ -100,12 +149,12 @@ public class DBHandler extends SQLiteOpenHelper {
 
         String selectQuery = "SELECT * FROM " + TABLE_ROUTES;
 
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         //Loop through database
 
-        if (cursor != null) {
+        if (cursor.moveToFirst()) {
             do {
                 NewRoute route = new NewRoute();
 
@@ -117,7 +166,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
                 allRoutes.add(route);
             }
-            while (cursor.moveToFirst());
+            while (cursor.moveToNext());
         }
 
         return allRoutes;
@@ -171,7 +220,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_DATE, route.getRouteDate());
         values.put(KEY_STYLE, route.getRouteStyle());
 
-        return db.update(TABLE_ROUTES, values, KEY_NAME = "= ?",
+        return db.update(TABLE_ROUTES, values, KEY_NAME + " = ?",
                 new String[]{String.valueOf(route.getRouteName())});
     }
 

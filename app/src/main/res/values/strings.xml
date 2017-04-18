@@ -24,4 +24,5 @@
         <item>Second</item>
         <item>Top-Rope</item>
     </string-array>
+    <string name="title_activity_maps">Map</string>
 </resources>

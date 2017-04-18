@@ -34,7 +34,7 @@ public class NewRoute {
     }
 
     public String getRouteGrade() {
-        return routeDate;
+        return routeGrade;
     }
 
     public String getRouteDate() {

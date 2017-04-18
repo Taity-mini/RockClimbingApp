@@ -12,13 +12,13 @@
             android:title="@string/menu_routes"></item>
 
         <item
-            android:id="@+id/locations_id"
-            android:title="@string/menu_locations"></item>
+            android:id="@+id/addRoute_id"
+            android:title="ADD ROUTE"></item>
 
 
         <item
-            android:id="@+id/preferences_id"
-            android:title="@string/menu_prefs"></item>
+            android:id="@+id/search_id"
+            android:title="SEARCH"></item>
     </group>
 
 </menu>

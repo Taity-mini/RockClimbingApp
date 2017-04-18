@@ -1,6 +1,8 @@
 package andrewtait1504693.rockclimbingapp;
 
-import android.support.v7.view.menu.MenuView;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.List;
  * Created by Andrew Tait (1504693) on 13/04/2017.
  */
 
-public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.MyViewHolder>  {
+public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.MyViewHolder> {
 
     private List<NewRoute> routes = new ArrayList<>();
 
@@ -34,26 +35,43 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     }
 
     @Override
-    public void onBindViewHolder(RecycleViewAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(RecycleViewAdapter.MyViewHolder holder, final int position) {
         holder.NAME.setText(routes.get(position).getRouteName());
         holder.LOCATION.setText(routes.get(position).getRouteLocation());
         holder.DATE.setText(routes.get(position).getRouteDate());
 
         //on click listeners
 
+        holder.BUTTON_VIEW.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                ViewRoute viewRouteFragment = new ViewRoute();
+
+                FragmentTransaction transaction = ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_container, viewRouteFragment);
+
+                viewRouteFragment.routeName = routes.get(position).getRouteName();
+
+                transaction.addToBackStack(null);
+                transaction.commit();
+
+            }
+        });
+
         holder.BUTTON_EDIT.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-            }
-        });
+                EditRoute editRouteFragment = new EditRoute();
 
-        holder.BUTTON_VIEW.setOnClickListener(new View.OnClickListener() {
+                FragmentTransaction transaction = ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_container, editRouteFragment);
 
-            @Override
-            public void onClick(View v) {
-
+                editRouteFragment.routeName = routes.get(position).getRouteName();
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 

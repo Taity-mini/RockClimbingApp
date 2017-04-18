@@ -144,14 +144,15 @@
         android:id="@+id/btnRouteReset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnAddNewRoute"
+        android:layout_alignBottom="@+id/btnAddNewRoute"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_marginEnd="34dp"
         android:layout_marginRight="34dp"
         android:background="@color/button"
+        android:onClick="onClick"
         android:text="Reset"
-        android:textColor="@color/colorWhite"
-        android:layout_alignBaseline="@+id/btnAddNewRoute"
-        android:layout_alignBottom="@+id/btnAddNewRoute"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:textColor="@color/colorWhite" />
 
 </RelativeLayout>
