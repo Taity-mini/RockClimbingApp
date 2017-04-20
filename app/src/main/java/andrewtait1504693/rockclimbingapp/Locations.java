@@ -97,13 +97,18 @@ public class Locations extends Fragment implements OnMapReadyCallback {
                         googleMap.getUiSettings().setAllGesturesEnabled(true);
 
                         p1 = getLocationFromAddress(getContext(), route.getRouteLocation());
-
-                        LatLng sydney = new LatLng(-34, 151);
-                        CameraPosition cameraPosition = new CameraPosition.Builder().target(p1).zoom(15.0f).build();
-                        CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
-                        googleMap.moveCamera(cameraUpdate);
-                        googleMap.addMarker(new MarkerOptions().position(p1).title(route.getRouteLocation()));
-
+                        if(p1 != null)
+                        {
+                            CameraPosition cameraPosition = new CameraPosition.Builder().target(p1).zoom(15.0f).build();
+                            CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
+                            googleMap.moveCamera(cameraUpdate);
+                            googleMap.addMarker(new MarkerOptions().position(p1).title(route.getRouteLocation()));
+                        }
+                        else
+                        {
+                            Toast error = Toast.makeText(getActivity().getApplicationContext(), "Location not available", Toast.LENGTH_LONG);
+                            error.show();
+                        }
                     }
                 }
             });
@@ -139,12 +144,17 @@ public class Locations extends Fragment implements OnMapReadyCallback {
             if (address == null) {
                 return null;
             }
-            Address location = address.get(0);
-            location.getLatitude();
-            location.getLongitude();
+            if (address != null && address.size() > 0) {
+                Address location = address.get(0);
+                location.getLatitude();
+                location.getLongitude();
 
-            p1 = new LatLng(location.getLatitude(), location.getLongitude());
+                p1 = new LatLng(location.getLatitude(), location.getLongitude());
 
+            }
+            else {
+                return null;
+            }
         } catch (IOException ex) {
 
             ex.printStackTrace();
