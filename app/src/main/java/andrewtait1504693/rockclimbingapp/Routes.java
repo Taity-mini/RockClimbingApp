@@ -48,7 +48,7 @@ public class Routes extends Fragment  implements View.OnClickListener  {
 
     public void onViewCreated(View view, Bundle savedInstanceState)
     {
-        DisplayEvents();
+        DisplayRoutes();
     }
 
 
@@ -58,13 +58,13 @@ public class Routes extends Fragment  implements View.OnClickListener  {
         ft.detach(this).attach(this).commit();
     }
 
-    public void DisplayEvents() {
+    public void DisplayRoutes() {
 
         DBHandler db = new DBHandler(getActivity().getApplicationContext());
 
         routes = new ArrayList<NewRoute>();
 
-        for (NewRoute route : db.getAllEvents()) {
+        for (NewRoute route : db.getAllRoutes()) {
             routes.add(new NewRoute(route.getRouteName(), route.getRouteLocation(), route.getRouteGrade(), route.getRouteDate(), route.getRouteStyle()));
         }
 

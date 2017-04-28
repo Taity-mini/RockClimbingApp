@@ -151,7 +151,7 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     //Return a list of the routes from the database
-    public List<NewRoute> getAllEvents() {
+    public List<NewRoute> getAllRoutes() {
         List<NewRoute> allRoutes = new ArrayList();
 
         String selectQuery = "SELECT * FROM " + TABLE_ROUTES;
