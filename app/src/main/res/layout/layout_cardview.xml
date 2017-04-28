@@ -19,7 +19,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:text="ROUTE NAME" />
+            android:text="ROUTE NAME"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/cardLocationtxt"
@@ -29,7 +31,9 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignTop="@+id/card_Location"
-            android:text="LOCATION" />
+            android:text="LOCATION"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/card_Location"
@@ -41,7 +45,8 @@
             android:layout_marginTop="18dp"
             android:layout_toEndOf="@+id/cardLocationtxt"
             android:layout_toRightOf="@+id/cardLocationtxt"
-            android:text="[LOCATION]" />
+            android:text="[LOCATION]"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/card_dateView"
@@ -50,7 +55,9 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:text="DATE" />
+            android:text="DATE"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/card_date"
@@ -59,7 +66,8 @@
             android:layout_alignLeft="@+id/card_Location"
             android:layout_alignStart="@+id/card_Location"
             android:layout_centerVertical="true"
-            android:text="[DATE]" />
+            android:text="[DATE]"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/card_btnEdit"
@@ -69,7 +77,10 @@
             android:layout_alignBottom="@+id/card_btnView"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:text="Edit" />
+            android:layout_margin="5dp"
+            android:background="@color/button"
+            android:text="Edit"
+            android:textColor="@color/colorWhite" />
 
         <Button
             android:id="@+id/card_btnView"
@@ -79,7 +90,9 @@
             android:layout_marginTop="50dp"
             android:layout_toLeftOf="@+id/card_btnEdit"
             android:layout_toStartOf="@+id/card_btnEdit"
-            android:text="View" />
+            android:background="@color/button"
+            android:text="View"
+            android:textColor="@color/colorWhite" />
 
     </RelativeLayout>
 

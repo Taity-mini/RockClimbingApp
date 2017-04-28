@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -35,16 +37,14 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Locations extends Fragment implements OnMapReadyCallback {
+public class Locations extends Fragment implements OnMapReadyCallback, View.OnClickListener {
 
     public static String routeName;
 
     NewRoute route;
-    GoogleMap map;
-    MapView mapView;
-    Marker marker;
     LatLng p1;
-    FragmentTransaction fragmentTransaction;
+    Button viewRoute;
+    TextView routeNameLabel;
 
     public Locations() {
         // Required empty public constructor
@@ -63,11 +63,18 @@ public class Locations extends Fragment implements OnMapReadyCallback {
 
         if (googlePlayServicesCheck()) {
             initMap();
+
+            routeNameLabel = (TextView) v.findViewById(R.id.locationRouteName);
+            routeNameLabel.setText(routeName.toString());
+            viewRoute = (Button) v.findViewById(R.id.btnLocationReturn);
+            viewRoute.setOnClickListener(this);
+
+
         } else {
 
-            Toast success = Toast.makeText(getActivity().getApplicationContext(), "Google play services unavailable", Toast.LENGTH_LONG);
+            Toast error = Toast.makeText(getActivity().getApplicationContext(), "Google play services unavailable", Toast.LENGTH_LONG);
 
-            success.show();
+            error.show();
 
             FragmentTransaction transaction = ((FragmentActivity) this.getContext()).getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.main_container, new Home());
@@ -167,5 +174,16 @@ public class Locations extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        ViewRoute viewRouteFragment = new ViewRoute();
+
+        FragmentTransaction transaction = ((FragmentActivity) this.getContext()).getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.main_container, viewRouteFragment);
+
+        viewRouteFragment.routeName = route.getRouteName();
+        transaction.commit();
     }
 }

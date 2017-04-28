@@ -2,8 +2,11 @@ package andrewtait1504693.rockclimbingapp;
 
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,10 +21,11 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Routes extends Fragment {
+public class Routes extends Fragment  implements View.OnClickListener  {
 
     public static ArrayList<NewRoute> routes;
     FragmentTransaction ft;
+    FloatingActionButton addNewRoute;
     private RecyclerView recyclerView;
 
     public Routes() {
@@ -36,7 +40,9 @@ public class Routes extends Fragment {
 
         View v =inflater.inflate(R.layout.fragment_routes, container, false);
         // Inflate the layout for this fragment
+        addNewRoute = ( FloatingActionButton) v.findViewById(R.id.AddfloatingActionButton);
 
+        addNewRoute.setOnClickListener(this);
         return v;
     }
 
@@ -86,4 +92,14 @@ public class Routes extends Fragment {
     }
 
 
+    @Override
+    public void onClick(View v) {
+        AddRoute addRouteFragment = new AddRoute();
+
+        FragmentTransaction transaction = ((FragmentActivity) v.getContext()).getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.main_container, addRouteFragment);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Add Route");
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 }

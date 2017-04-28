@@ -3,6 +3,7 @@ package andrewtait1504693.rockclimbingapp;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -58,29 +59,12 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     public boolean checkRouteExists(String name) {
-//        SQLiteDatabase db = this.getReadableDatabase();
-//
-//        Cursor cursor;
-//        String sql = "SELECT "+ KEY_NAME +" FROM " + TABLE_ROUTES + " WHERE " + KEY_NAME + " = " + name;
-//        cursor = db.rawQuery(sql, null);
-//
-//
-//        if (cursor.getCount() > 0) {
-//            cursor.close();
-//            db.close();
-//            return true;
-//        } else {
-//            cursor.close();
-//            db.close();
-//            return false;
-//        }
 
 
         SQLiteDatabase db = getWritableDatabase();
         String selectString = "SELECT * FROM " + TABLE_ROUTES + " WHERE " + KEY_NAME + " =?";
 
-        // Add the String you are searching by here.
-        // Put it in an array to avoid an unrecognized token error
+
         Cursor cursor = db.rawQuery(selectString, new String[] {name});
 
         boolean hasObject = false;
@@ -143,6 +127,29 @@ public class DBHandler extends SQLiteOpenHelper {
         return route;
     }
 
+    public String getFavouriteStyle()
+    {
+        String style ="";
+
+        String selectQuery = "SELECT" + KEY_STYLE +"FROM" + TABLE_ROUTES +
+                "GROUP BY" + KEY_STYLE +
+                "HAVING COUNT(*) = (" +
+                "                   SELECT MAX(Cnt)" +
+                "                   FROM(" +
+                "                         SELECT COUNT(*) as Cnt" +
+                "                         FROM " + TABLE_ROUTES +
+                "                         GROUP BY " + KEY_STYLE +
+                "                        ) tmp" +
+                "                    )";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        style = cursor.getString(0);
+
+        return style;
+    }
+
     //Return a list of the routes from the database
     public List<NewRoute> getAllEvents() {
         List<NewRoute> allRoutes = new ArrayList();
@@ -177,11 +184,11 @@ public class DBHandler extends SQLiteOpenHelper {
     public List<NewRoute> searchRouteResults(String search) {
         List<NewRoute> searchResults = new ArrayList<>();
 
-        String searchQuery = "SELECT * FROM" + TABLE_ROUTES + " where " + KEY_NAME + "LIKE %" + search + "%";
+        String searchQuery = "SELECT * FROM " + TABLE_ROUTES + " WHERE " + KEY_NAME + " LIKE '%" + search + "%'";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(searchQuery, null);
 
-        if (cursor != null) {
+        if (cursor.moveToFirst()) {
             do {
                 NewRoute route = new NewRoute();
 
@@ -193,20 +200,29 @@ public class DBHandler extends SQLiteOpenHelper {
 
                 searchResults.add(route);
             }
-            while (cursor.moveToFirst());
+            while (cursor.moveToNext());
         }
 
         return searchResults;
     }
 
-    public int getRoutesCount() {
-        String counterQuery = "SELECT * FROM" + TABLE_ROUTES;
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(counterQuery, null);
-        cursor.close();
-        return cursor.getCount();
-    }
+//    public int getRoutesCount() {
+//        String counterQuery = "SELECT * FROM" + TABLE_ROUTES;
+//
+//
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        Cursor cursor = db.rawQuery(counterQuery, null);
+//
+//        int count = 0;
+//        if(null != cursor){
+//            if(cursor.getCount() > 0){
+//                cursor.moveToFirst();
+//                count = cursor.getInt(0);
+//            }
+//        cursor.close();
+//    }
+//        return count;
+//    }
 
     //update route
     public int updateRoute(NewRoute route) {
@@ -228,6 +244,10 @@ public class DBHandler extends SQLiteOpenHelper {
     public boolean deleteRoute(String name) {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(TABLE_ROUTES, KEY_NAME + "='" + name + "' ;", null) > 0;
+    }
+
+    public long getRouteCount() {
+        return DatabaseUtils.queryNumEntries(this.getReadableDatabase(), TABLE_ROUTES);
     }
 
 

@@ -12,16 +12,44 @@
         android:id="@+id/locationMap"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.google.android.gms.maps.SupportMapFragment" />
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_marginBottom="118dp"
+        android:layout_alignParentBottom="true" />
 
+    <Button
+        android:id="@+id/btnLocationReturn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="19dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="21dp"
+        android:background="@color/button"
+        android:text="Back to route"
+        android:textColor="@color/colorWhite" />
 
-    <!--<com.google.android.gms.maps.MapView-->
-        <!--android:id="@+id/mapView"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_marginTop="22dp"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:layout_alignParentStart="true" />-->
+    <TextView
+        android:id="@+id/locationRouteName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnLocationReturn"
+        android:layout_alignEnd="@+id/btnLocationReturn"
+        android:layout_alignLeft="@+id/btnLocationReturn"
+        android:layout_alignRight="@+id/btnLocationReturn"
+        android:layout_alignStart="@+id/btnLocationReturn"
+        android:layout_marginEnd="15dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginStart="18dp"
+        android:text="Route Name"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
 
 </RelativeLayout>

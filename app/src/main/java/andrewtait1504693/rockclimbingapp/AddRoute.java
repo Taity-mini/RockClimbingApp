@@ -68,7 +68,7 @@ public class AddRoute extends Fragment implements View.OnClickListener, DatePick
 
         ROUTE_STYLE = (Spinner) v.findViewById(R.id.spinnerRouteStyles);
 
-
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Add Route");
         //Add on click listeners
         dateBtn.setOnClickListener(this);
         addBtn.setOnClickListener(this);

@@ -28,85 +28,74 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <ImageView
+                android:id="@+id/ivLogo"
+
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:src="@drawable/climbing_logo2"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="69dp"
+                android:layout_alignParentBottom="true" />
+
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/textRoutesLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/textTotalRoutes"
-                android:layout_alignBottom="@+id/textTotalRoutes"
-                android:layout_toLeftOf="@+id/textView8"
-                android:layout_toStartOf="@+id/textView8"
-                android:text="Total Routes" />
+
+                android:text="Total Routes"
+                android:textAllCaps="true"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_alignParentBottom="true"
+                android:layout_toLeftOf="@+id/textTotalRoutes"
+                android:layout_toStartOf="@+id/textTotalRoutes"
+                android:layout_marginBottom="15dp" />
 
             <TextView
                 android:id="@+id/textTotalRoutes"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textView8"
-                android:layout_marginTop="34dp"
-                android:layout_toEndOf="@+id/textView8"
-                android:layout_toRightOf="@+id/textView8"
-                android:text="[MAX]" />
+                android:layout_height="match_parent"
+                android:text="[MAX]"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/cardview_dark_background"
+                android:layout_alignTop="@+id/textRoutesLabel"
+                android:layout_alignRight="@+id/txtStats"
+                android:layout_alignEnd="@+id/txtStats" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/txtStats"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textView3"
+                android:layout_alignBottom="@+id/ivLogo"
                 android:layout_centerHorizontal="true"
-                android:text="Statistics " />
+                android:text="Statistics"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="308dp"
-                android:layout_height="93dp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="29dp"
-                android:layout_marginTop="24dp"
-                android:text="Welcome!"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/textView10"
-                android:layout_alignStart="@+id/textView10"
-                android:layout_below="@+id/textView10"
-                android:layout_marginTop="18dp"
-                android:text="Average Grade" />
-
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/textView14"
-                android:layout_alignBottom="@+id/textView14"
-                android:layout_alignLeft="@+id/textTotalRoutes"
-                android:layout_alignStart="@+id/textTotalRoutes"
-                android:text="[AVG]" />
-
-            <TextView
-                android:id="@+id/textView16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/textView17"
-                android:layout_alignBottom="@+id/textView17"
-                android:layout_alignLeft="@+id/textView15"
-                android:layout_alignStart="@+id/textView15"
-                android:text="[BEST]" />
-
-            <TextView
-                android:id="@+id/textView17"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/textView14"
-                android:layout_alignStart="@+id/textView14"
-                android:layout_below="@+id/textView14"
-                android:layout_marginTop="22dp"
-                android:text="Best Grade" />
+                android:text="Rock Climbing Logbook"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                android:textStyle="bold|italic"
+                android:layout_marginTop="54dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
         </RelativeLayout>
 
